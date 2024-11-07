@@ -180,10 +180,13 @@ def register():
         headers={'x-gateway-signature': create_signature(request.method + request.path, SIGNER_KEY)}
         )
 
+    print(response.status_code)
     if response.status_code == 201:
+        print("Registered Successfully")
         # return redirect(f'{user_service_url}/message?message="Registered Successfully"', code=200)
         return jsonify(response.json()), response.status_code
     # print(response, "status code \n\n" , response.status_code)
+    print("Failed to register")
     return jsonify(response.json()), response.status_code
 
 # Route to send a password reset email

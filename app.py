@@ -125,6 +125,7 @@ def before_request():
     payload = request.method + request.path
     # print("url", request.url)
     # print("payload", payload)
+    print("signature", request.method + request.path)
 
 
     # Verify the signature
@@ -132,7 +133,6 @@ def before_request():
         pass  # Continue processing the request
 
     else:
-        print("signature", request.method + request.path)
         return jsonify({'message': 'Invalid signature'}), 403
 
 # Route for user login

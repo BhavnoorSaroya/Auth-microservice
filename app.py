@@ -84,6 +84,7 @@ def verify_signature(payload, signature):
         
         # Create a verifier with the public key
         # verifier = PKCS1_v1_5.new(public_key)
+        print(decoded_signature)
 
         SIGNATURE_KEY.verify(
             decoded_signature,
@@ -97,6 +98,7 @@ def verify_signature(payload, signature):
         return True  # verifier.verify(h, decoded_signature)
     except Exception as e:
         print(f"Verification failed: {e}")
+
         return False
 
 # Alternatively, for the entire app, add a global options handler
@@ -130,6 +132,7 @@ def before_request():
         pass  # Continue processing the request
 
     else:
+        print("signature", request.method + request.path)
         return jsonify({'message': 'Invalid signature'}), 403
 
 # Route for user login

@@ -211,7 +211,7 @@ def forgot_password():
     user_service_url = f"{USER_SERVICE_URL}/user/{email}"
     user_response = requests.get(
         user_service_url, 
-        headers={'x-gateway-signature': create_signature(request.method + request.path, SIGNER_KEY)}
+        headers={'x-gateway-signature': create_signature("/GET" + f"/user/{email}", SIGNER_KEY)}
         )
 
     if user_response.status_code == 200:

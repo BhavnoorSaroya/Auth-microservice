@@ -237,7 +237,7 @@ def forgot_password():
 # Helper function to send a password reset email
 def send_reset_email(recipient_email, reset_token):
     
-    base_reset_url = f'{FRONTEND_URL}/password-reset'
+    base_reset_url = f'{FRONTEND_URL}/reset'
     
     reset_url = base_reset_url + "?jwt=" + reset_token
     subject = "Password Reset Request"
